@@ -17,7 +17,7 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private  static final String SECRET_KEY ="t2CsQ7D3FsXaiPxTGPo4ZRnDrQ4bL+QzPWE+rUZhfOj1bwFxOG0QhWWtFrZAKn83";
+    private  static final String SECRET_KEY ="5367566B59703373357638792F423F4528482B4D6251655468576D5A71347437";
     //Extract username from jeton JWT
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -43,7 +43,7 @@ public class JwtService {
                 .setSubject(userDetails.getUsername()) //Should be Unique for Spring is always called Username
                 .setIssuedAt(new Date(System.currentTimeMillis())) //To check if the validation of Token is expired or no
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 *60 *24 ))
-                .signWith(getSignInKey(), SignatureAlgorithm.ES256)
+                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();//Generate and return the Token
     }
 
