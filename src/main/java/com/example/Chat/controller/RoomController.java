@@ -1,16 +1,13 @@
-package com.example.Chat.contollers;
+package com.example.Chat.controller;
 
 import com.example.Chat.model.Room;
-import com.example.Chat.service.RoomService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/")
