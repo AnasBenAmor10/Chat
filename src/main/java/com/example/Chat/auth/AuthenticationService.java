@@ -47,4 +47,20 @@ public class AuthenticationService {
                 .token(jwtToken)
                 .build();
     }
+
+    public AuthentcationResponse login(LoginRequest request) {
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
+        var user = repository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        var jwtToken = jwtService.generateToken(user);
+        return AuthentcationResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
 }
